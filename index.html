@@ -82,18 +82,17 @@
 <script src="./dist/nonogram.min.js"></script>
 
 <script type="module">
+    import {Creator, Gui} from './src/index.js';
 
-	import {Creator, Gui} from './src/index.js';
+    const creator = new Creator();
+    const puzzle  = creator.createRandom(8, 8);
 
-
-	const creator = new Creator();
-	const puzzle  = creator.createRandom( 8, 8 );
-	const gui     = new Gui();
-
-	gui.draw( puzzle );
-
+    // Check if the library expects the puzzle as a config object
+    const gui = new Gui({
+        puzzle: puzzle,
+        container: document.querySelector('[data-nonogram-puzzle-grid]')
+    });
 </script>
-
 
 </body>
 </html>
